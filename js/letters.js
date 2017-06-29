@@ -17,7 +17,7 @@ var counter = {
 
 function countLetters(counter, sample_text){
   for (var letter in counter) {
-    thisCount = theCounter(letter, sample_text, 0);
+    thisCount = theCounter(letter, sample_text.toLowerCase(), 0);
     //console.log("letter ", thisCount);
     counter[letter] = thisCount;
   }
@@ -31,8 +31,10 @@ function theCounter(letter, sample_text, index){
   return theCounter(letter, sample_text, nextIndex+1) + 1;
 }
 
-$(document).ready(function(){
-  countLetters(counter, sample_text);
-  $("#result").html(JSON.stringify(counter));
-});
+// $(document).ready(function(){
+//   countLetters(counter, sample_text);
+//   $("#result").html(JSON.stringify(counter));
+// });
 
+countLetters(counter, sample_text);
+console.log(counter);
