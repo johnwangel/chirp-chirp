@@ -13,13 +13,26 @@ var counter = {
   "q" : 0,  "r" : 0,  "s" : 0,  "t" : 0,
   "u" : 0,  "v" : 0,  "w" : 0,  "x" : 0,
   "y" : 0,  "z" : 0
-}
+};
 
 function countLetters(counter, sample_text){
-  // FIX ME
+  for (var letter in counter) {
+    thisCount = theCounter(letter, sample_text, 0);
+    //console.log("letter ", thisCount);
+    counter[letter] = thisCount;
+  }
+}
+
+function theCounter(letter, sample_text, index){
+  var nextIndex = sample_text.indexOf(letter, index);
+  if ( nextIndex === -1){
+    return 0;
+  }
+  return theCounter(letter, sample_text, nextIndex+1) + 1;
 }
 
 $(document).ready(function(){
   countLetters(counter, sample_text);
   $("#result").html(JSON.stringify(counter));
 });
+
